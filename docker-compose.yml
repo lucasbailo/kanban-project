@@ -1,6 +1,19 @@
-version: "3.8"
-
 services:
+  # Angular FrontEnd
+  frontend:
+    build: 
+      dockerfile: Dockerfile
+      context: ./angular-frontend
+      target: development
+    command: npm run start
+    volumes:
+    - ./angular-frontend:/lucas/frontend/src/app
+    - /lucas/frontend/src/app/node_modules
+    ports: 
+      - "4200:4200"
+    depends_on:
+      - api
+
   # NestJS Todo API
   api:
     build:
