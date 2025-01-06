@@ -1,1 +1,11 @@
-export class CreateUserDto {}
+/* eslint-disable prettier/prettier */
+
+import { IsNotEmpty, IsString } from "class-validator";
+import { LoginUserDto } from "./login-user.dto";
+
+export class CreateUserDto extends LoginUserDto {
+
+    @IsString()
+    @IsNotEmpty()
+    username: string
+}
